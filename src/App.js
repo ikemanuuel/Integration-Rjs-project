@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import './app.css';
 import { Login } from "./Pages/Login/Login";
 import { Register } from "./Pages/Register/Register";
+import { ForgotPass } from "./Pages/Forgotpass/Forgotpass";
 
 
 export function App() {
@@ -20,7 +21,7 @@ export function App() {
       </div>
       
       {
-        currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />
+        currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : (currentForm === "register" ? <Register onFormSwitch={toggleForm} /> : <ForgotPass onFormSwitch={toggleForm} />)
       }
     </div>
   );
