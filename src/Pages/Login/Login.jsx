@@ -1,90 +1,107 @@
-import React, { useState } from 'react';
-import './login.css';
-//import { Switch } from "react-router-dom";
+import React, { useState } from 'react'
+import { useNavigate, Link } from 'react-router-dom';
+import './login.css'
 
-export const Login = (props) => {
+
+
+const Login = () => {
+    const navigate = useNavigate();
+
+    const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const passvalid = /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9-]{7,}$/;
 
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
+
   const [error, setError] = useState('');
   const [error1, setError1] = useState('');
+
   const [msg, setMsg] = useState('');
+  
+  // danhi kay sa Email Input dapit inig tuplok
+  const checkEmail = (e) => {
+    setEmail(e.target.value);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // check email and password, set error messages if invalid
-    if (!email || email === '') {
-      setMsg('');
-      setError('Please input an email');
-      return;
-    }
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (regex.test(email) === false) {
-      setMsg('');
-      setError('Must input correct Email.');
-      return;
-    } else {
+    if(regex.test(email) === false){
+      setMsg('')
+      setError('Must input correct Email ');
+      return
+    }else{
       setError('');
+      return true;
     }
+  }
 
-    if (!pass || pass === '') {
-      setMsg('');
-      setError1('Please input a password');
-      return;
-    }
-    const passvalid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    if (passvalid.test(pass) === false) {
-      setMsg('');
-      setError1('Password must have at least 8 characters length, one Uppercase letter, one lowercase letter, one digit, and one special character.');
-      return;
-    } else {
+   // danhi kay sa Password Input dapit inig tuplok
+  const checkPass = (e) =>{
+    setPass(e.target.value);
+
+    if(passvalid.test(pass) === false){
+      setMsg('')
+      setError1('Must input 8 characters length and have an Uppercase and Lowercase Letters');
+      return
+    }else{
       setError1('');
+      return true;
     }
+  }
+      // dinhi dapit kay sa pag submit nimo mag validate siya 
+  const submit = () => {
+    if (email === '' && pass === ''){
+      setError('Please Input an Email')
+      setError1('Please Input an Password')
 
-    if (email==="user@example.com" && pass==="testpassword") {
-        console.log('Logged in successfully!');
-        setMsg('Login Successful!');
+    }else{
+      if (passvalid.test(pass) === false || regex.test(email) === false){
+        setError('')
+        setError1('')
+        setMsg('Invalid Input')
+      }else{
+      navigate('dash')
       }
+  }
+}
     
-  };
-
   return (
-    <div className="auth-form-container">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h2>Login</h2>
-        <label htmlFor="email">Email:</label>
-        <input
-          id="email"
-          type="email"
-          name="email"
-          placeholder="you@example.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <br />
-        <label htmlFor="password">Password:</label>
-        <input
-          id="password"
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={pass}
-          onChange={(e) => setPass(e.target.value)}
-        />
-        <br />
-        {error && <p className="error-message">{error}</p>}
-        {error1 && <p className="error-message">{error1}</p>}
-        {msg === 'Login Successful!' && <p className="success-message">{msg}</p>}
-        {msg === 'Invalid Input' && <p className="error-message">{msg}</p>}
-        <button type="submit">Log In</button>
-        <button onClick={() => props.onFormSwitch('register')}>
-          Don't have an account? Register here.
-        </button>
-        <button onClick={() => props.onFormSwitch('forgotpass')}>Forgot Password?</button>
-      </form>
-    </div>
-  );
-};
+    <div className='container'>
+        <div className='form'>
+            <text className='logintxt'>Login</text>
 
-export default Login;
+            <input 
+            type = "email"
+            className = 'inputs' 
+            placeholder='youremail@gmail.com'
+            onChange={checkEmail}
+            />
+            <text className='em'>Email</text>
+            <p className='msgcolor errorposition'>{error}</p>
+
+            <input  
+            type = "password" 
+            className = 'input'
+            placeholder='********'
+            onChange={checkPass}
+            />
+            <text className='pas'>Password</text>
+            <p className='msgcolor error1position'>{error1}</p>
+
+            <text className='dyhaa'>Do you have an account??</text>
+
+            {/* kung sa register mag link2 ka buhata lang ni */}
+            {/* <Link to = '/' className = 'log'> Login </Link> */}
+            <Link to = 'register' className='log'>Register</Link>
+
+            <button className='btn' type='button' onClick={submit}>
+                <text className='txt'>
+                    Login
+                </text>
+            </button>
+            <p className='msgcolor msgposition'>{msg}</p>
+            
+        </div>
+    </div>
+  )
+}
+
+
+export default Login
