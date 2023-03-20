@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+
 import './forgot.css'
 
 export const ForgotPass = () => {
+        
   const [email, setEmail] = useState('');
 
   const handleSubmit = (e) => {

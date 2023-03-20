@@ -1,8 +1,21 @@
-.container {
+*{
+  padding: 0;
+  margin: 0;
+
+}
+
+
+
+.logcontainer {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  
+  width: 500vw;
+  background-image: url('../../Images/Barangaybcg.jpg');
+  background-size:100% 100%;
+  background-repeat: no-repeat;
 }
 
 .form {
@@ -12,8 +25,10 @@
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  width: 300px;
   background-color: #f7f7f7;
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+  margin-top: 40px;
 }
 
 .logintxt {
@@ -42,9 +57,15 @@
   outline: none;
 }
 
-.em, .pas, .dyhaa, .log {
+.em, .em, .dyhaa, .log {
   font-size: 16px;
   margin-bottom: 10px;
+}
+
+.reg {
+  font-weight: bold;
+  text-decoration: none;
+  color: #4285f4;
 }
 
 .btn {

@@ -63,7 +63,7 @@ const Login = () => {
 }
     
   return (
-    <div className='container'>
+    <div className='logcontainer'>
         <div className='form'>
             <text className='logintxt'>Login</text>
 
@@ -82,14 +82,16 @@ const Login = () => {
             placeholder='********'
             onChange={checkPass}
             />
-            <text className='pas'>Password</text>
+            <text className='em'>Password</text>
             <p className='msgcolor error1position'>{error1}</p>
 
-            <text className='dyhaa'>Do you have an account??</text>
+            <text className='dyhaa'>Don't you have an account??</text>
 
             {/* kung sa register mag link2 ka buhata lang ni */}
             {/* <Link to = '/' className = 'log'> Login </Link> */}
-            <Link to = 'register' className='log'>Register</Link>
+            <Link to = 'register' className='reg'>Register</Link>
+
+            <Link to = 'forgotpass' className='reg'>ForgotPassword</Link>
 
             <button className='btn' type='button' onClick={submit}>
                 <text className='txt'>

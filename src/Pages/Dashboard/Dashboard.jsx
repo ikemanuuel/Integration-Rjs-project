@@ -1,8 +1,11 @@
 import React from 'react'
+import './dashboard.css'
 
 const Dashboard = () => {
   return (
-    <div>YOW NAKA LOGIN NAKA DUDE</div>
+    <div className='dashcontainer'>
+    <div></div>
+    </div>
   )
 }
 

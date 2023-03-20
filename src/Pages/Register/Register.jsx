@@ -114,6 +114,7 @@ const Register = () => {
             placeholder='full name'
             onChange={checkFull}
         />
+          <text className='em'>Full Name</text>
         <p className='msgcolor errorposition'>{errorfull}</p>
 
 
@@ -122,7 +123,8 @@ const Register = () => {
             className = 'regemail' 
             placeholder='youremail@gmail.com'
             onChange={checkEmail}
-        />
+        />  
+           <text className='em'>Email</text>
          <p className='msgcolor errorposition'>{erroremail}</p>
 
         <input 
@@ -131,6 +133,7 @@ const Register = () => {
             placeholder='user name'
             onChange={checkUsern}
         />
+          <text className='em'>Username</text>
         <p className='msgcolor error1position'>{erroruser}</p>
 
         <input 
@@ -139,6 +142,7 @@ const Register = () => {
             placeholder='******'
             onChange={checkPass}
         />
+          <text className='em'>Password</text>
           <p className='msgcolor error1position'>{errorpass}</p>
 
 

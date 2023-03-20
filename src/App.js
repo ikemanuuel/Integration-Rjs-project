@@ -7,8 +7,7 @@ import {
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import Dashboard from "./Pages/Dashboard/Dashboard";
-
-
+import ForgotPass from "./Pages/Forgotpass/Forgotpass";
 
 
 function App() {
@@ -21,6 +20,7 @@ function App() {
               <Route path="/" element={<Login />} />
               <Route path='register' element={<Register />} />
               <Route path = 'dash' element = {<Dashboard/>}/>
+              <Route path = 'forgotpass' element = {<ForgotPass/>}/>
           </Routes>
           </div>
         </Router>
