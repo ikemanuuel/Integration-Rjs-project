@@ -1,7 +1,10 @@
 import React from 'react'
-import './Dashboard.css'
+import './dashboard.css'
 
 function Dashboard() {
+
+
+  
   return (
     <>
         <nav classname='Dashboard'>
