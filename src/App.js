@@ -8,7 +8,7 @@ import Login from "./Authentication/Login/Login";
 import Register from "./Authentication/Register/Register";
 import ForgotPass from "./Authentication/Forgotpass/Forgotpass";
 import Dashboard from "./Pages/Dashboard/Dashboard";
-import Sidebar from "./Components/sidebar";
+
 
 
 
