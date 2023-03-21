@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import './forgot.css'
 
 export const ForgotPass = () => {
@@ -13,7 +12,7 @@ export const ForgotPass = () => {
   }
 
   return (
-    <div className="auth-forgot">
+    <div className="Forgot-container">
       <form className="forgot-form" onSubmit={handleSubmit}>
         <h2>Forgot Password</h2>
         <label htmlFor="email"></label>

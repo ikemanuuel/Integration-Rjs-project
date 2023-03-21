@@ -4,28 +4,34 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Login from "./Pages/Login/Login";
-import Register from "./Pages/Register/Register";
+import Login from "./Authentication/Login/Login";
+import Register from "./Authentication/Register/Register";
+import ForgotPass from "./Authentication/Forgotpass/Forgotpass";
 import Dashboard from "./Pages/Dashboard/Dashboard";
-import ForgotPass from "./Pages/Forgotpass/Forgotpass";
+import Sidebar from "./Components/sidebar";
+
+
 
 
 function App() {
   return (
-    
+
       <div className="App">
         <Router>
           <div className="container">
-          <Routes>
+            <Routes>
               <Route path="/" element={<Login />} />
               <Route path='register' element={<Register />} />
-              <Route path = 'dash' element = {<Dashboard/>}/>
               <Route path = 'forgotpass' element = {<ForgotPass/>}/>
-          </Routes>
+              <Route path = 'dash' element = {<Dashboard/>}/>   
+            </Routes>
           </div>
         </Router>
       </div>
+      
+        
     );
   }
 
 export default App;
+
