@@ -15,22 +15,22 @@ const Sidebar = ({children}) => {
    const toggle = () => setIsOpen (!isOpen);
    const menuItem=[
              {
-                path:"/",
+                path:"/dash/",
                 name:"Dashboard",
                 icon:< RxDashboard/>
              },
              {
-                path:"/household",
+                path:"/dash/household",
                 name:"Household",
                 icon:<BsHouseFill/>
              },
              {
-                path:"/resident",
+                path:"/dash/resident",
                 name:"Resident",
                 icon:<BsFillPersonFill/>
              },
              {
-                path:"/report",
+                path:"/dash/report",
                 name:"Report",
                 icon:<TbReport/>
              },
