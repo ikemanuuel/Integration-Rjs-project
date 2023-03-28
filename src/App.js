@@ -8,12 +8,6 @@ import Login from "./Authentication/Login/Login";
 import Register from "./Authentication/Register/Register";
 import ForgotPass from "./Authentication/Forgotpass/Forgotpass";
 import Dashboard from "./Pages/Dashboard/Dashboard";
-import Household from "./Pages/Household/Household";
-import Resident from "./Pages/Resident/Resident";
-import Report from "./Pages/Report/Report";
-
-
-
 
 
 
@@ -28,7 +22,6 @@ function App() {
               <Route path='/register' element={<Register />} />
               <Route path = '/forgotpass' element = {<ForgotPass/>}/>
               <Route path = '/dash/*' element = {<Dashboard/>}/>  
-
             </Routes>
           </div>
         </Router>
