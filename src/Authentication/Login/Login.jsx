@@ -15,7 +15,7 @@ const Login = () => {
 
   const [error, setError] = useState("");
 
-  const [msg, setMsg] = useState("");
+  const [msg] = useState("");
 
   const submit = () => {
     axios
@@ -23,7 +23,7 @@ const Login = () => {
       .then((response) => {
         setData("");
         setError("");
-        navigate("/Dashboard");
+        navigate("/dash");
       })
       .catch((error) => {
         console.log(error);
@@ -41,7 +41,7 @@ const Login = () => {
         <input
           type="email"
           className="inputs"
-          placeholder="youremail@gmail.com"
+          placeholder="username"
           value={username}
           onChange={(event) => {
             setData({ ...data, username: event.target.value });
