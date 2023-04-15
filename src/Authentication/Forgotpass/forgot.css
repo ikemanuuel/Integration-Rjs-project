@@ -10,8 +10,10 @@
     align-items: center;
     height: 100vh;
     width: 100vw;
-    background-image: url('../../Images/forgotbcg.jpg');
-    background-size:100% 100%;
+    background-image: url('../../Images/forgot-password-icon-27.png');
+    background-size:50% 50%;
+    background-position: center 50%;
+    background-position-x: right;
     background-repeat: no-repeat;
   }
   
@@ -36,7 +38,7 @@
       font-size: 36px;
       font-family: 'Poppins', sans-serif;
       margin-bottom: 1rem;
-      color: #ffffff;
+      color: #000000;
   }
   
   .forgot-form label {

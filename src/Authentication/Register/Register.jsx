@@ -2,105 +2,103 @@ import React, {useState} from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import './register.css'
 
+const updateErrorFN = (errorfirstname, stateUpdater) => {
+  stateUpdater(errorfirstname);
+};
+const updateErrorLN = (errorlastname, stateUpdater) => {
+  stateUpdater(errorlastname);
+};
+const updateErrorEM = (erroremail, stateUpdater) => {
+  stateUpdater(erroremail);
+};
+const updateErrorUN = (errorusername, stateUpdater) => {
+  stateUpdater(errorusername);
+};
+const updateErrorPW = (errorpassword, stateUpdater) => {
+  stateUpdater(errorpassword);
+};
+
 const Register = () => {
     const navigate = useNavigate();
 
-    const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    const passvalid = /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9-]{7,}$/;
+    const isValidEmail = (value) => {
+      const regx = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+      return regx.test(value);
+    };
+    
+    const isPasswordValid = (value) => {
+      const regx = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+      return regx.test(value);
+    };
 
     const [full, setFull] = useState('');
-    const [email, setEmail] = useState('');
-    const [usern, setUsern] = useState('');
-    const [pass, setPass] = useState('');
+    const [data, setData] = useState({
+      first_name: "",
+      last_name: "",
+      username: "",
+      email: "",
+      password: "",});
 
+      const {
+        first_name,
+        last_name,
+        username,
+        email,
+        password,
+      } = data;
+    
     
 
-    const [errorfull, setErrorfull] = useState('');
+    const [errorfirstname, setErrorfirstname] = useState('');
+    const [errorlastname, setErrorlastname] = useState('');
     const [erroremail, setErroremail] = useState('');
-    const [erroruser, setErroruser] = useState('');
-    const [errorpass, setErrorpass] = useState('');
+    const [errorusername, setErrorusername] = useState('');
+    const [errorpassword, setErrorpassword] = useState('');
 
     const [msg, setMsg] = useState('');
 
 
-
-    const checkFull = (e) => {
-      setFull(e.target.value);
-
-      if(full === false){
-        setMsg('')
-        setErrorfull('Must input correct Email ');
-        return
-      }else{
-        setErrorfull('');
-        setMsg('')
-        return true;
-      }
-    }
-
-    const checkEmail = (e) => {
-      setEmail(e.target.value);
-
-      if(regex.test(email) === false){
-        setMsg('')
-        setErroremail('Must input correct Email ');
-        return
-      }else{
-        setErroremail('');
-        return true;
-      }
-    }
-
-
-    const checkUsern = (e) => {
-      setUsern(e.target.value);
-
-      if(full === false){
-        setMsg('')
-        return
-      }else{
-        setErroruser('');
-        setMsg('')
-        return true;
-      }
-    }
-
-
-    const checkPass = (e) =>{
-    setPass(e.target.value);
-
-    if(passvalid.test(pass) === false){
-      setMsg('')
-      setErrorpass('Must input 8 characters length and have an Uppercase and Lowercase Letters');
-      return
-    }else{
-      setErrorpass('');
-      return true;
-    }
+    const formValidation = () =>{
+      if (!first_name.trim() || first_name.length < 3){
+        return updateErrorFN("Invalid name!", setErrorfirstname);
   }
-
-
+   if (!last_name.trim() || last_name.length < 3){
+    return updateErrorLN("Invalid name!", setErrorlastname);
+  
+  }
+   if (!isValidEmail(email)){
+        return updateErrorEM("Invalid name!", setErroremail);
+  }
+   if (!username.trim() || username.length < 3){
+        return updateErrorUN("Invalid username!", setErrorusername);
+  }
+   if (!isPasswordValid(password)){
+          return updateErrorPW("Invalid Password must contain: Atleast one digit and special character, 8 to 16 characters!", setErrorpassword);  
+  }
+    }
    const submit = () => {
-    if (full === '' && pass === '' && usern === '' && pass === ''){
-       setErrorfull('Please Input a Name')
-      setErroremail('Please Input an Email')
-      setErroruser('Please Input a User Name')
-      setErrorpass('Please Input an Password')
-
-
-    }else{
-      if (full === false || passvalid.test(pass) === false || usern === false || regex.test(email) === false){
-        setErrorfull('')
-        setErroremail('')
-        setErroruser('')
-        setErrorpass('')
-        setMsg('Invalid Input')
-      }else{
-        // console.log('yooowsadgshjasgdhghas')
-        navigate('/')
+    if (formValidation()) {
+      if (first_name.trim() || first_name.length > 3) {
+        setErrorfirstname("");
+      }
+      if (last_name.trim() || last_name.length > 3) {
+        setErrorlastname("");
+      }
+  
+      if (username.trim() || username.length >= 11) {
+        setErrorusername("");
+      }
+      if (formValidation(email)) {
+        setErroremail("");
+      }
+      if (isPasswordValid(password)){
+        setErrorpassword("");
+        
       }
   }
-}
+  }
+   
+
 
 
   return (
@@ -111,18 +109,36 @@ const Register = () => {
         <input 
             type = "text"
             className = 'regfull' 
-            placeholder='full name'
-            onChange={checkFull}
+            placeholder='first name'
+            value={first_name}
+            onChange={(event) => {
+              setData({ ...data, first_name: event.target.value });
+            }}
         />
-          <text className='em'>Full Name</text>
-        <p className='msgcolor errorposition'>{errorfull}</p>
+          <text className='em'>First Name</text>
+        {errorfirstname ? <p className='msgcolor errorposition'>{errorfirstname}</p> : null}
+
+        <input 
+            type = "text"
+            className = 'regfull' 
+            placeholder='last name'
+            value={last_name}
+            onChange={(event) => {
+              setData({ ...data, last_name: event.target.value });
+            }}
+        />
+          <text className='em'>Last Name</text>
+        <p className='msgcolor errorposition'>{errorlastname}</p>
 
 
         <input 
             type = "email"
             className = 'regemail' 
             placeholder='youremail@gmail.com'
-            onChange={checkEmail}
+            value={email}
+            onChange={(event) => {
+              setData({ ...data, email: event.target.value });
+            }}
         />  
            <text className='em'>Email</text>
          <p className='msgcolor errorposition'>{erroremail}</p>
@@ -131,19 +147,25 @@ const Register = () => {
             type = "text"
             className = 'reguser' 
             placeholder='user name'
-            onChange={checkUsern}
+            value={username}
+            onChange={(event) => {
+              setData({ ...data, username: event.target.value });
+            }}
         />
           <text className='em'>Username</text>
-        <p className='msgcolor error1position'>{erroruser}</p>
+        <p className='msgcolor error1position'>{errorusername}</p>
 
         <input 
             type = "password"
             className = 'regpass' 
             placeholder='******'
-            onChange={checkPass}
+            value={password}
+            onChange={(event) => {
+              setData({ ...data, password: event.target.value });
+            }}
         />
           <text className='em'>Password</text>
-          <p className='msgcolor error1position'>{errorpass}</p>
+          <p className='msgcolor error1position'>{errorpassword}</p>
 
 
 
