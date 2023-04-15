@@ -6,7 +6,7 @@ import {
 } from "react-icons/bs";
 import { RxDashboard } from "react-icons/rx";
 import { TbReport } from "react-icons/tb";
-import { FaBars,FaSignOutAlt } from "react-icons/fa";
+import { FaBars,FaSignOutAlt,FaMapMarkedAlt } from "react-icons/fa";
 import {AiOutlineUserAdd} from "react-icons/ai"
 import { NavLink } from 'react-router-dom';
 import './sidebar.css';
@@ -39,6 +39,11 @@ const Sidebar = ({children}) => {
                 path:"/dash/report",
                 name:"Report",
                 icon:<TbReport/>
+             },
+             {
+                path:"/dash/map",
+                name:"Map",
+                icon:<FaMapMarkedAlt/>
              },
              {
                 path:"/",
