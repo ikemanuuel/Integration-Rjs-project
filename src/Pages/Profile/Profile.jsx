@@ -1,11 +1,10 @@
 import React from 'react'
-import './report.css'
 
-const Report = () => {
+const Profile = () => {
 
     return (
         
-        <div className="report">
+        <div className="profile">
             <h1>Under Construction</h1>
         </div> 
          
@@ -13,4 +12,4 @@ const Report = () => {
     )
   }
   
-  export default Report;
+  export default Profile;

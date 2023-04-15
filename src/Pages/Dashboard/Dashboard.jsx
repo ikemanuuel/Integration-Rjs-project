@@ -7,6 +7,7 @@ import Resident from "../../Pages/Resident/Resident";
 import Addresident from "../Addresident/Addresident";
 import Report from "../../Pages/Report/Report";
 import Map from "../Map/Map";
+import Profile from "../Profile/Profile";
 import Blackboard from "./Blackboard";
 
 function Dashboard() {
@@ -23,6 +24,7 @@ function Dashboard() {
             <Route path="resident" element={<Resident />} />
             <Route path="addresident" element={<Addresident />} />
             <Route path="map" element={<Map />} />
+            <Route path="profile" element={<Profile />} />
             <Route path="report" element={<Report />} />
           </Routes>
         </div>
