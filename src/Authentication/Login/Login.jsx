@@ -1,109 +1,84 @@
-import React, { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom';
-import './login.css'
-
-
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import "./login.css";
+import axios from "axios";
 
 const Login = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    const passvalid = /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9-]{7,}$/;
+  const [data, setData] = useState({
+    username: "",
+    password: "",
+  });
 
-  const [email, setEmail] = useState('');
-  const [pass, setPass] = useState('');
+  const { username, password } = data;
 
-  const [error, setError] = useState('');
-  const [error1, setError1] = useState('');
+  const [error, setError] = useState("");
 
-  const [msg, setMsg] = useState('');
-  
-  // danhi kay sa Email Input dapit inig tuplok
-  const checkEmail = (e) => {
-    setEmail(e.target.value);
+  const [msg, setMsg] = useState("");
 
-    if(regex.test(email) === false){
-      setMsg('')
-      setError('Must input correct Email ');
-      return
-    }else{
-      setError('');
-      return true;
-    }
-  }
-
-   // danhi kay sa Password Input dapit inig tuplok
-  const checkPass = (e) =>{
-    setPass(e.target.value);
-
-    if(passvalid.test(pass) === false){
-      setMsg('')
-      setError1('Must input 8 characters length and have an Uppercase and Lowercase Letters');
-      return
-    }else{
-      setError1('');
-      return true;
-    }
-  }
-      // dinhi dapit kay sa pag submit nimo mag validate siya 
   const submit = () => {
-    if (email === '' && pass === ''){
-      setError('Please Input an Email')
-      setError1('Please Input an Password')
+    axios
+      .post("http://localhost:8000/api/v1/accounts/token/login/", data, {})
+      .then((response) => {
+        setData("");
+        setError("");
+        navigate("/Dashboard");
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(
+          "Invalid Credentials!\nor your account may not be activated\nplease check your email for activation"
+        );
+      });
+  };
 
-    }else{
-      if (passvalid.test(pass) === false || regex.test(email) === false){
-        setError('')
-        setError1('')
-        setMsg('Invalid Input')
-      }else{
-      navigate('dash')
-      }
-  }
-}
-    
   return (
-    <div className='logcontainer'>
-        <div className='form'>
-            <text className='logintxt'>Login</text>
+    <div className="logcontainer">
+      <div className="form">
+        <text className="logintxt">Login</text>
+        <p className="msgcolor errorposition">{error}</p>
+        <input
+          type="email"
+          className="inputs"
+          placeholder="youremail@gmail.com"
+          value={username}
+          onChange={(event) => {
+            setData({ ...data, username: event.target.value });
+          }}
+        />
+        <text className="em">Username</text>
 
-            <input 
-            type = "email"
-            className = 'inputs' 
-            placeholder='youremail@gmail.com'
-            onChange={checkEmail}
-            />
-            <text className='em'>Email</text>
-            <p className='msgcolor errorposition'>{error}</p>
+        <input
+          type="password"
+          className="input"
+          placeholder="********"
+          value={password}
+          onChange={(event) => {
+            setData({ ...data, password: event.target.value });
+          }}
+        />
+        <text className="em">Password</text>
 
-            <input  
-            type = "password" 
-            className = 'input'
-            placeholder='********'
-            onChange={checkPass}
-            />
-            <text className='em'>Password</text>
-            <p className='msgcolor error1position'>{error1}</p>
+        <text className="dyhaa">Don't you have an account??</text>
 
-            <text className='dyhaa'>Don't you have an account??</text>
+        {/* kung sa register mag link2 ka buhata lang ni */}
+        {/* <Link to = '/' className = 'log'> Login </Link> */}
+        <Link to="register" className="reg">
+          Register
+        </Link>
 
-            {/* kung sa register mag link2 ka buhata lang ni */}
-            {/* <Link to = '/' className = 'log'> Login </Link> */}
-            <Link to = 'register' className='reg'>Register</Link>
+        <Link to="forgotpass" className="reg">
+          ForgotPassword
+        </Link>
 
-            <Link to = 'forgotpass' className='reg'>ForgotPassword</Link>
-
-            <button className='btn' type='button' onClick={submit}>
-                <text className='txt'>
-                    Login
-                </text>
-            </button>
-            <p className='msgcolor msgposition'>{msg}</p>
-            
-        </div>
+        <button className="btn" type="button" onClick={submit}>
+          <text className="txt">Login</text>
+        </button>
+        <p className="msgcolor msgposition">{msg}</p>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-
-export default Login
+export default Login;

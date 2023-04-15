@@ -16,7 +16,7 @@
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  width: 350px;
+  width: 600px;
   background-color: #f7f7f7;
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
 }
@@ -28,7 +28,7 @@
 }
 
 .regfull, .regemail, .reguser, .regpass {
-  width: 100%;
+  width: 85%;
   padding: 10px;
   margin-bottom: 10px;
   border: none;
@@ -36,7 +36,18 @@
   font-size: 16px;
   outline: none;
 }
-
+.succescolor{
+  color: green;
+}
+.names {
+  display: flex;
+  flex-direction: row;
+  gap: 10px
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
 .regfull::placeholder, .regemail::placeholder, .reguser::placeholder, .regpass::placeholder {
   font-size: 16px;
 }
