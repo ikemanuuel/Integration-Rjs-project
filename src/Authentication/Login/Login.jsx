@@ -21,6 +21,7 @@ const Login = () => {
     axios
       .post("http://localhost:8000/api/v1/accounts/token/login/", data, {})
       .then((response) => {
+        localStorage.setItem("token", response.data.auth_token);
         setData("");
         setError("");
         navigate("/dash");

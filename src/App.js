@@ -5,6 +5,7 @@ import Register from "./Authentication/Register/Register";
 import ForgotPass from "./Authentication/Forgotpass/Forgotpass";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Activated from "./Pages/Activated/activated";
+import Resident from "./Pages/Resident/Resident";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/forgotpass" element={<ForgotPass />} />
             <Route path="/dash/*" element={<Dashboard />} />
             <Route path="/Activated" element={<Activated />} />
+            <Route path="/resident/*" element={<Resident />} />
           </Routes>
         </div>
       </Router>

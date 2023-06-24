@@ -6,7 +6,6 @@ import {
 import { RxDashboard } from 'react-icons/rx';
 import { TbReport } from 'react-icons/tb';
 import { FaBars, FaSignOutAlt, FaMapMarkedAlt } from 'react-icons/fa';
-import { AiOutlineUserAdd } from 'react-icons/ai';
 import { CgProfile } from 'react-icons/cg';
 import { NavLink } from 'react-router-dom';
 import './sidebar.css';
@@ -14,6 +13,12 @@ import './sidebar.css';
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/";
+    window.history.pushState(null, null, "/");
+    console.log('test')
+  }
   const menuItem = [
     {
       path: '/dash/',
@@ -29,11 +34,6 @@ const Sidebar = ({ children }) => {
       path: '/dash/resident',
       name: 'Resident',
       icon: <BsFillPersonFill />,
-    },
-    {
-      path: '/dash/addresident',
-      name: 'addresident',
-      icon: <AiOutlineUserAdd />,
     },
     {
       path: '/dash/report',
@@ -69,7 +69,11 @@ const Sidebar = ({ children }) => {
           </div>
         </div>
         {menuItem.map((item, index) => (
-          <NavLink to={item.path} key={index} className="link" activeClassName="active">
+          <NavLink to={item.path} key={index} className="link" activeClassName="active" onClick={() => {
+            if (item.name === "Logout") {
+              handleLogout();
+            }
+          }}>
             <div className="icon">{item.icon}</div>
             <div style={{ display: isOpen ? 'block' : 'none' }} className="link_text">
               {item.name}
