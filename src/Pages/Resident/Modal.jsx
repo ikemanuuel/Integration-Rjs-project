@@ -47,7 +47,7 @@ const Modal = ({ residentInfo, handleInputChange, handleFormSubmit, handleModalC
           
 
           <button className="add-button small" type="submit" >
-            weeeeeeeeeeeeeeeeeeeeeewsss
+            Add Resident
           </button>
         </form>
       </div>
