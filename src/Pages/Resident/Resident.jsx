@@ -3,7 +3,7 @@ import './resident.css';
 
 const ResidentForm = () => {
   const [residents, setResidents] = useState([]);
-  const [residentInfo, setResidentInfo] = useState({ id: '', name: '', age: '' });
+  const [residentInfo, setResidentInfo] = useState({ id: '', name: '', age: '', Address: '' });
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleInputChange = (e) => {
@@ -22,7 +22,7 @@ const ResidentForm = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     setResidents([...residents, residentInfo]);
-    setResidentInfo({ id: '', name: '', age: '' });
+    setResidentInfo({ id: '', name: '', age: '', Address: '' });
     setIsModalOpen(false);
   };
 
@@ -55,6 +55,7 @@ const ResidentForm = () => {
                 type="text"
                 id="name"
                 name="name"
+                address="name"
                 value={residentInfo.name}
                 onChange={handleInputChange}
               />
@@ -65,7 +66,19 @@ const ResidentForm = () => {
                 type="text"
                 id="age"
                 name="age"
+                address="age"
                 value={residentInfo.age}
+                onChange={handleInputChange}
+              />
+
+              <label htmlFor="address">Address</label>
+              <input
+                className="input-field"
+                type="text"
+                id="address"
+                name="address"
+                address="address"
+                value={residentInfo.address}
                 onChange={handleInputChange}
               />
 
@@ -83,6 +96,7 @@ const ResidentForm = () => {
             <th className='hakdog'>ID</th>
             <th className='hakdog'>Name</th>
             <th className='hakdog'>Age</th>
+            <th className='hakdog'>Address</th>
             <th className='hakdog'>Action</th>
           </tr>
         </thead>
@@ -92,6 +106,7 @@ const ResidentForm = () => {
               <td className='hakdogs'>{index+1}</td>
               <td className='hakdogs'>{resident.name}</td>
               <td className='hakdogs' >{resident.age}</td>
+              <td className='hakdogs' >{resident.address}</td>
               <td className='hakdogs' onClick={handleRemoveResident}>dulot</td>
             </tr>
           ))}
