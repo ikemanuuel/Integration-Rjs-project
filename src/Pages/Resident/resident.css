@@ -1,66 +1,66 @@
 .btnz {
-    padding: 10px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    outline: none;
-  }
-
-  .containerzz{
-    display:flex;
-    flex-direction: row;
-    height: 100vh;
-    width: 100% 
+  padding: 10px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
 }
 
-  .resident-table{
-    width: 100%;
-    border: 1px solid black;
-  }
+.containerzz {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+}
 
-  .hakdog{
-    border: 1px solid black;
-    padding: 5px;
-  }
+.resident-table {
+  width: 100%;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
 
-  .hakdogs{
-    border: 1px solid black;
-    text-align: center;
-    padding: 5px;
-  }
+.hakdog {
+  border: 1px solid black;
+  padding: 5px;
+}
 
+.hakdogs {
+  border: 1px solid black;
+  text-align: center;
+  padding: 5px;
+}
 
-  /* MODAL CSS */
+/* MODAL CSS */
 
-  .title{
-    text-align: center;
-  }
+.title {
+  text-align: center;
+}
 
-  .modal {
+.modal {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 20%;
-  width: 16%;
-  background-color: red;
+  background-color: rgb(247, 246, 246);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  padding: 20px;
 }
 
+.input-field {
+  justify-content: center;
+}
 
-  .input-field{
-    justify-content: center;
-  }
-
-  .close{
-    position: relative;
-    color: black;
-    cursor: pointer;
-    width: 15%;
-    
-
-
-  }
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: black;
+  cursor: pointer;
+}

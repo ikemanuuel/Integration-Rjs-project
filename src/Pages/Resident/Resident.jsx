@@ -4,7 +4,24 @@ import Modal from './Modal';
 
 const ResidentForm = () => {
   const [residents, setResidents] = useState([]);
-  const [residentInfo, setResidentInfo] = useState({ id: '', name: '', age: '', Address: '' });
+  const [residentInfo, setResidentInfo] = useState({ id: '',
+    firstname: '',
+    lastname: '',
+    age: '',
+    gender: '',
+    birthdate:'',
+    birthplace:'',
+    civilstatus:'',
+    bloodtype:'',
+    religion:'',
+    totalhouseholdmember:'',
+    occupation:'',
+    nationality:'',
+    educationalattainment:'',
+    householdno:'',
+
+
+   });
   const [show, setShow] = useState(false);
 
   const handleInputChange = (e) => {
@@ -15,7 +32,21 @@ const ResidentForm = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     setResidents([...residents, residentInfo]);
-    setResidentInfo({ id: '', name: '', age: '', Address: '' });
+    setResidentInfo({ id: '', 
+    firstname: '', 
+    lastname: '',
+    age: '',
+    gender: '',
+    birthdate:'',
+    birthplace:'',
+    civilstatus:'',
+    bloodtype:'',
+    religion:'',
+    totalhouseholdmember:'',
+    occupation:'',
+    nationality:'',
+    educationalattainment:'',
+    householdno:'' });
   };
 
   const handleRemoveResident = (index) => {
@@ -49,21 +80,45 @@ const ResidentForm = () => {
           <thead>
             <tr>
               <th className="hakdog">ID</th>
-              <th className="hakdog">Name</th>
+              <th className="hakdog">First Name</th>
+              <th className="hakdog">Middle Name</th>
+              <th className="hakdog">Last Name</th>
+              <th className="hakdog">Birthdate</th>
+              <th className="hakdog">Birthplace</th>
               <th className="hakdog">Age</th>
-              <th className="hakdog">Address</th>
-              <th className="hakdog">Action</th>
+              <th className="hakdog">Gender</th>
+              <th className="hakdog">CivilStatus</th>
+              <th className="hakdog">Blood Type</th>
+              <th className="hakdog">Religion</th>
+              <th className="hakdog">Total Household Member</th>
+              <th className="hakdog">Occupation</th>
+              <th className="hakdog">Nationality</th>
+              <th className="hakdog">Educational Attainment</th>
+              <th className="hakdog">Household No</th>
+        
             </tr>
           </thead>
           <tbody>
             {residents.map((resident, index) => (
               <tr key={index}>
                 <td className="hakdogs">{index + 1}</td>
-                <td className="hakdogs">{resident.name}</td>
+                <td className="hakdogs">{resident.firstname}</td>
+                <td className="hakdogs">{resident.middlename}</td>
+                <td className="hakdogs">{resident.lastname}</td>
+                <td className="hakdogs">{resident.birthdate}</td>
+                <td className="hakdogs">{resident.birthplace}</td>
                 <td className="hakdogs">{resident.age}</td>
-                <td className="hakdogs">{resident.address}</td>
+                <td className="hakdogs">{resident.Gender}</td>
+                <td className="hakdogs">{resident.civilstatus}</td>
+                <td className="hakdogs">{resident.bloodtype}</td>
+                <td className="hakdogs">{resident.religion}</td>
+                <td className="hakdogs">{resident.totalhouseholdmember}</td>
+                <td className="hakdogs">{resident.occupation}</td>
+                <td className="hakdogs">{resident.nationality}</td>
+                <td className="hakdogs">{resident.educationalattainment}</td>
+                <td className="hakdogs">{resident.householdno}</td>
                 <td className="hakdogs" onClick={handleRemoveResident}>
-                  dulot
+                  Delete
                 </td>
               </tr>
             ))}
