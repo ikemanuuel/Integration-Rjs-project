@@ -1,43 +1,14 @@
 import React from 'react';
 import './resident.css';
 
-const Modal = ({ residentInfo, handleInputChange, handleFormSubmit, handleModalClose }) => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    
-    // Check if any required fields are missing
-    if (
-      !residentInfo.firstname ||
-      !residentInfo.lastname ||
-      !residentInfo.age ||
-      !residentInfo.gender ||
-      !residentInfo.birthdate ||
-      !residentInfo.birthplace ||
-      !residentInfo.civilstatus ||
-      !residentInfo.bloodtype ||
-      !residentInfo.religion ||
-      !residentInfo.totalhouseholdmember ||
-      !residentInfo.occupation ||
-      !residentInfo.nationality ||
-      !residentInfo.educationalattainment ||
-      !residentInfo.householdno
-    ) {
-      alert('Please fill in all required fields.');
-      return;
-    }
-
-    // Call the original form submit handler
-    handleFormSubmit();
-  };
+const Modal = ({ residentInfo, handleInputChange, /*handleFormSubmit,*/ handleModalClose }) => {
 
   return (
     <div className="modal">
       <div className="modal-content">
-        <button className="close" onClick={handleModalClose}>
-          X
-        </button>
+       
         <h2 className="title">Resident Form</h2>
-        <form onSubmit={handleFormSubmit}>
+        {/* <form onSubmit={handleFormSubmit}> */}
         <label htmlFor="firstname">First Name:</label>
         <input
           className="input-field"
@@ -205,10 +176,10 @@ const Modal = ({ residentInfo, handleInputChange, handleFormSubmit, handleModalC
 
           
 
-          <button className="add-button small" type="submit" >
+          <button className="add-button small" type="button" onClick={handleModalClose} >
             Add Resident
           </button>
-        </form>
+        {/* </form> */}
       </div>
     </div>
   );

@@ -29,25 +29,9 @@ const ResidentForm = () => {
     setResidentInfo({ ...residentInfo, [name]: value });
   };
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    setResidents([...residents, residentInfo]);
-    setResidentInfo({ id: '', 
-    firstname: '', 
-    lastname: '',
-    age: '',
-    gender: '',
-    birthdate:'',
-    birthplace:'',
-    civilstatus:'',
-    bloodtype:'',
-    religion:'',
-    totalhouseholdmember:'',
-    occupation:'',
-    nationality:'',
-    educationalattainment:'',
-    householdno:'' });
-  };
+  // const handleFormSubmit = (e) => {
+    
+  // };
 
   const handleRemoveResident = (index) => {
     const updatedResidents = [...residents];
@@ -55,8 +39,48 @@ const ResidentForm = () => {
     setResidents(updatedResidents);
   };
 
-  const handleModalClose = () => {
-    setShow(false);
+  const handleModalClose = (e) => {
+    e.preventDefault();
+
+    if (residentInfo.firstname === '' &&
+        residentInfo.lastname === '' &&
+        residentInfo.age === '' &&
+        residentInfo.gender === '' &&
+        residentInfo.birthdate === '' &&
+        residentInfo.birthplace === '' &&
+        residentInfo.civilstatus === '' &&
+        residentInfo.bloodtype === '' &&
+        residentInfo.religion === '' &&
+        residentInfo.totalhouseholdmember === '' &&
+        residentInfo.occupation === '' &&
+        residentInfo.nationality === '' &&
+        residentInfo.educationalattainment === '' &&
+        residentInfo.householdno === '' 
+        ){
+          alert("Kulang Kulang haha ")
+        }else{
+
+          setResidents([...residents, residentInfo]);
+          setResidentInfo({ id: '', 
+          firstname: '', 
+          lastname: '',
+          age: '',
+          gender: '',
+          birthdate:'',
+          birthplace:'',
+          civilstatus:'',
+          bloodtype:'',
+          religion:'',
+          totalhouseholdmember:'',
+          occupation:'',
+          nationality:'',
+          educationalattainment:'',
+          householdno:'' });
+      
+          setShow(false);
+        }
+    
+    
   };
 
   return (
@@ -71,7 +95,7 @@ const ResidentForm = () => {
           <Modal
             residentInfo={residentInfo}
             handleInputChange={handleInputChange}
-            handleFormSubmit={handleFormSubmit}
+            // handleFormSubmit={handleFormSubmit}
             handleModalClose={handleModalClose}
           />
         )}
