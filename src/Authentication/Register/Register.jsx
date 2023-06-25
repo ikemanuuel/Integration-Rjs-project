@@ -94,7 +94,7 @@ const Register = () => {
     if (formValidation()) {
       console.log(data);
       axios
-        .post("http://localhost:8000/api/v1/accounts/users/", data, {})
+        .post("https://darkrayleh.pythonanywhere.com/api/v1/accounts/users/", data, {})
         .then((response) => {
           console.log(response.data);
           setData("");

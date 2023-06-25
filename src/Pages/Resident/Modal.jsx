@@ -1,12 +1,17 @@
 import React from 'react';
 import './resident.css';
 
-const Modal = ({ residentInfo, handleInputChange, /*handleFormSubmit,*/ handleModalClose }) => {
+const Modal = ({ residentInfo, handleInputChange, handleFormSubmit, handleModalClose }) => {
 
+  
   return (
     <div className="modal">
+      <button className="close" onClick={handleModalClose}>
+          X
+        </button>
       <div className="modal-content">
-       
+      
+
         <h2 className="title">Resident Form</h2>
         {/* <form onSubmit={handleFormSubmit}> */}
         <label htmlFor="firstname">First Name:</label>
@@ -176,7 +181,7 @@ const Modal = ({ residentInfo, handleInputChange, /*handleFormSubmit,*/ handleMo
 
           
 
-          <button className="add-button small" type="button" onClick={handleModalClose} >
+          <button className="add-button small" type="button" onClick={handleFormSubmit} >
             Add Resident
           </button>
         {/* </form> */}

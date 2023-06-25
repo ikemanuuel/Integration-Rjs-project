@@ -19,7 +19,7 @@ const Login = () => {
 
   const submit = () => {
     axios
-      .post("http://localhost:8000/api/v1/accounts/token/login/", data, {})
+      .post("https://darkrayleh.pythonanywhere.com/api/v1/accounts/token/login/", data, {})
       .then((response) => {
         localStorage.setItem("token", response.data.auth_token);
         setData("");
