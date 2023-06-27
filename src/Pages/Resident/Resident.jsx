@@ -36,7 +36,7 @@ const ResidentForm = () => {
 
   const fetchResidents = () => {
     axios
-      .get('http://localhost:8000/api/v1/residents/residents/list')
+      .get('https://darkrayleh.pythonanywhere.com/api/v1/residents/residents/list')
       .then((response) => {
         setResidents(response.data);
         
@@ -48,7 +48,7 @@ const ResidentForm = () => {
   const handleRemoveResident = async (resident) => {
     try {
       const response = await axios.delete(
-        `http://localhost:8000/api/v1/residents/residents/delete/${resident.id}/`
+        `https://darkrayleh.pythonanywhere.com/api/v1/residents/residents/delete/${resident.id}/`
         
       );
       setResidents((prevResidents) =>
@@ -88,7 +88,7 @@ const ResidentForm = () => {
         }else{
 
           axios
-      .post('http://localhost:8000/api/v1/residents/residents/', residentInfo)
+      .post('https://darkrayleh.pythonanywhere.com/api/v1/residents/residents/', residentInfo)
       .then((response) => {
         window.location.reload();
         
