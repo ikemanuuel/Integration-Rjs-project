@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Integration-Rjs-project/static/css/main.0217927d.css",
+    "main.js": "/Integration-Rjs-project/static/js/main.2198ec35.js",
+    "static/media/Barangaybcg.jpg": "/Integration-Rjs-project/static/media/Barangaybcg.22c001d233c9c5666ade.jpg",
+    "static/media/forgot-password-icon-27.png": "/Integration-Rjs-project/static/media/forgot-password-icon-27.f20893a1c64044ddb82b.png",
+    "index.html": "/Integration-Rjs-project/index.html",
+    "main.0217927d.css.map": "/Integration-Rjs-project/static/css/main.0217927d.css.map",
+    "main.2198ec35.js.map": "/Integration-Rjs-project/static/js/main.2198ec35.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0217927d.css",
+    "static/js/main.2198ec35.js"
+  ]
+}
